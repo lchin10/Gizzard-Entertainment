@@ -5,11 +5,15 @@ body
 
 h1.title
 {
-    -webkit-text-stroke: 2px black;
     text-align: center;
     font-family: "SF Mono", monospace;
-    text-shadow: 2px 2px;
+    text-shadow: 1.5px 1.5px;
 
+}
+h1.title:visited
+{
+    text-decoration: none;
+    color: white;
 }
 
 hr.maindiv
