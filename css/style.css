@@ -23,11 +23,27 @@ hr.maindiv
     width: 800px;
     height: 2px;
 }
-
 img.checkerpic
 {
     position: relative;
     top: 50px;
     left: 100px;
+
+}
+
+img.tttpic
+{
+    position: relative;
+    top: 50px;
+    left: 100px
+}
+
+h2.checkerdesc
+{
+    position: relative;
+    top: -220px;
+    left: 375px;
+    color: white;
+    font-family: "SF Mono", monospace;
 
 }
