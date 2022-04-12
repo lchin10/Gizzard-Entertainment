@@ -5,7 +5,7 @@
 <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 </p>
 <p>
-  davcurse.github.io/Gizzard-Entertainment
+  https://davcurse.github.io/Gizzard-Entertainment
 </p>
 
 
