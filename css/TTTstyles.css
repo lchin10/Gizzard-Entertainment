@@ -89,9 +89,9 @@ body{
     top: 0;
     left: 0;
     right: 0;
-    bottom: 10;
+    bottom: 0;
     display: fiex;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     color: black;
     font-size: 5rem;
