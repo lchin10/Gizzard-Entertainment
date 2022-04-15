@@ -95,7 +95,6 @@ body{
     align-items: center;
     color: black;
     font-size: 5rem;
-    flex-direction: column;
 }
 
 .winning-message button{
