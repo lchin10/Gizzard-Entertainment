@@ -92,7 +92,7 @@ body{
     bottom: 0;
     display: fiex;
     justify-content: top;
-    align-items: center;
+    align-items: top;
     color: black;
     font-size: 5rem;
 }
