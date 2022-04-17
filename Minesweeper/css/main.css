@@ -1,0 +1,19 @@
+:root {
+  font-family: 'Calibri';
+}
+
+.grid {
+  margin: auto;
+  background: black;
+}
+
+.grid TD {
+  font-size: 14pt;
+  border: 4px #f9f9f9;
+  background: gray;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+/*# sourceMappingURL=main.css.map */
