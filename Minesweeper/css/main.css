@@ -15,14 +15,14 @@ TD {
   cursor: pointer;
 }
 
-.revealed {
+TD.revealed {
   background: pink;
 }
 
-.hidden {
+TD.hidden {
   background: white;
 }
 
-.flagged {
+TD.flagged {
   background: red;
 }
