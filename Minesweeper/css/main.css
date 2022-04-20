@@ -2,10 +2,12 @@
   font-family: 'Calibri';
 }
 
-.grid {
+.board {
   margin: auto;
 }
-
+TR {
+  margin: auto;
+}
 TD {
   font-size: 10pt;
   border: 1px solid #222222;
@@ -24,5 +26,5 @@ TD.hidden {
 }
 
 TD.flagged {
-  background: red;
+  background: white;
 }

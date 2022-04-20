@@ -7,9 +7,27 @@
   </head>
   <body>
   <div class="main">
-    <table id="grid" class="grid"></table>
-    <p id = "flag-counter"></p>
-    <p id = "tile-counter"></p>
+    
+    <table id="main-table">
+      <tr>
+        <td>
+          <img src="images/clock_symbol.jpg" id="clock-symbol" class="counter" height = 40px width = 40px>
+          <span id = "timer" class="counter"></span>
+        </td>
+
+        <td>
+          <img src="images/minesweeper_flag.jpg" alt="minesweeper flag" id="minesweeper-flag" class="minesweeper-flag" height = 40px width = 40px>
+          <span id = "flag-count" class="counter"></span>
+        </td>
+      </tr>
+      <tr>
+        <table id="grid" class="board"></table>
+      </tr>
+      <tr>
+        <button id = "restart">Restart</button>
+      </tr>
+    </table>
+
     
   </div>
   

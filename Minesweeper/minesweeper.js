@@ -1,18 +1,28 @@
+'use strict'
+
 class Minesweeper {
-    constructor(grid,difficulty){
+
+
+
+
+    constructor(grid,flag_display){       
         
-        if (difficulty==1){
-            this.rows = 25
-            this.columns = 25;
-            this.n_mines = 150;
-        }
+        this.rows = 15
+        this.columns = 18;
+        this.n_mines = 50;
+        this.flag_counter = this.n_mines;
+        this.remaining_tiles = this.rows*this.columns-this.n_mines;
+        this.flag_display = flag_display;
+        let instance = this;
+        
+        this.flag_display.innerHTML = this.flag_counter;
+
+
         grid.innerHTML = "";
         this.reference_array = [];
-        this.tiles_left = this.rows*this.columns - this.n_mines;
-        this.flags_left = this.n_mines;
 
         let row, cell;
-        let instance = this;
+        
         
         for(let i = 0; i<this.rows;i++){
             row = grid.insertRow(i);
@@ -25,17 +35,21 @@ class Minesweeper {
                     if (click == 3){
                         if(this.className == "hidden"){
                             this.className = "flagged"
-                            instance.flags_left--;
+                            this.innerHTML = "<img src=\"images/minesweeper_flag.jpg\" width=16px height=13px>"
+                            instance.flag_counter = instance.flag_counter - 1;
+                            instance.flag_display.innerHTML = instance.flag_counter;
                         }
                         else if(this.className == "flagged"){
                             this.className = "hidden"
-                            instance.flags_left++;
+                            this.innerHTML = ""
+                            instance.flag_counter = instance.flag_counter + 1;
+                            instance.flag_display.innerHTML = instance.flag_counter;
                         }
+                        console.log(flag_counter);
                     }
                     if (click == 1){
                         instance.reveal(this);
                     }
-                    console.log(this.className);
                 }
                 cell.setAttribute('val',0);
                 cell.setAttribute('i',i)
@@ -52,6 +66,8 @@ class Minesweeper {
         this.board_drawn = false;
         this.game_over = false;
     }
+
+    
 
     create_board(reserved_tile){
         let available_tiles = [];
@@ -147,9 +163,7 @@ class Minesweeper {
         cell.className = "revealed";
 
 
-        if (this.value(cell) == 0){
-            zero_tiles.push(pos);
-        } else if(this.value(cell)==-1){
+        if(this.value(cell)==-1){
             this.game_over=true; //mine!
             //reveal all
             for (let i = 0; i<this.rows; i++){
@@ -157,9 +171,14 @@ class Minesweeper {
                     this.reference_array[i][j].innerHTML = this.value(this.reference_array[i][j]);
                 }
             }
+        } else {
+
+            this.remaining_tiles--;
+
+            if (this.value(cell) == 0){
+            zero_tiles.push(pos);
+            }
         }
-        
-        this.tiles_left--;
 
         let I, J, tile_i,val_i;
         let zero_tile;
@@ -176,7 +195,7 @@ class Minesweeper {
                             val_i = this.value(tile_i)
                             tile_i.innerHTML = val_i;  
                             tile_i.className = "revealed"  
-                            this.tiles_left--;                        
+                            this.remaining_tiles--;                        
                             if(val_i == 0){        
                                 zero_tiles.push([I+di, J+dj]);
                             }
@@ -184,6 +203,9 @@ class Minesweeper {
                     }
                 }
             }
+        }
+        if (this.remaining_tiles == 0) { //win condition
+            console.log("you win!")
         }
 
     }
@@ -198,12 +220,28 @@ class Minesweeper {
 
 
 
-
 let GUI = document.getElementById("grid");
+document.getElementById("restart").onclick = function () {
+    board = new Minesweeper(GUI)
+};
 
-let board = new Minesweeper(GUI,1);
+let timer = document.getElementById("timer");
+let flag_counter = document.getElementById("flag-count")
+let time_elapsed = 0;
+
+
+setInterval(increment_time(),1000)
 
 
 
 
 
+let board = new Minesweeper(GUI,flag_counter)
+
+
+
+
+function increment_time() {
+    time_elapsed = time_elapsed+1;
+    timer.innerHTML = time_elapsed;
+}
