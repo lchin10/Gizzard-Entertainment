@@ -2,13 +2,15 @@ class Minesweeper {
     constructor(grid,difficulty){
         
         if (difficulty==1){
-            this.rows = 8
-            this.columns = 10;
-            this.n_mines = 10;
+            this.rows = 25
+            this.columns = 25;
+            this.n_mines = 150;
         }
         grid.innerHTML = "";
         this.reference_array = [];
-        
+        this.tiles_left = this.rows*this.columns - this.n_mines;
+        this.flags_left = this.n_mines;
+
         let row, cell;
         let instance = this;
         
@@ -18,13 +20,32 @@ class Minesweeper {
             for( let j  = 0; j<this.columns;j++){
                 this.reference_array[i].push(row.insertCell(j));
                 cell = this.reference_array[i][j]
-                cell.onclick = function() {
-                    instance.reveal(this);
+                cell.onmousedown = function() {
+                    let click = window.event.which;
+                    if (click == 3){
+                        if(this.className == "hidden"){
+                            this.className = "flagged"
+                            instance.flags_left--;
+                        }
+                        else if(this.className == "flagged"){
+                            this.className = "hidden"
+                            instance.flags_left++;
+                        }
+                    }
+                    if (click == 1){
+                        instance.reveal(this);
+                    }
+                    console.log(this.className);
                 }
                 cell.setAttribute('val',0);
                 cell.setAttribute('i',i)
                 cell.setAttribute('j',j)
-                cell.innerHTML = "S"
+                cell.addEventListener('contextmenu', function(ev) {
+                    ev.preventDefault();
+                    return false;
+                }, false);
+
+                cell.className = "hidden";
             }
         }
 
@@ -107,6 +128,11 @@ class Minesweeper {
     }
 
     reveal(cell){
+        if (cell.className == "flagged"){
+            return;
+        }
+
+
         let pos = [
             Number(cell.getAttribute('i')),
             Number(cell.getAttribute('j'))
@@ -118,6 +144,8 @@ class Minesweeper {
         
         let zero_tiles = [];
         cell.innerHTML = cell.getAttribute("val");
+        cell.className = "revealed";
+
 
         if (this.value(cell) == 0){
             zero_tiles.push(pos);
@@ -131,6 +159,7 @@ class Minesweeper {
             }
         }
         
+        this.tiles_left--;
 
         let I, J, tile_i,val_i;
         let zero_tile;
@@ -143,9 +172,11 @@ class Minesweeper {
                 for (let dj = -1; dj <2; dj++){
                     if (this.in_bounds(I+di,J+dj)){
                         tile_i = this.reference_array[I+di][J+dj]
-                        if(tile_i.innerHTML=='S'){
+                        if(tile_i.className=='hidden'){
                             val_i = this.value(tile_i)
-                            tile_i.innerHTML = val_i;                            
+                            tile_i.innerHTML = val_i;  
+                            tile_i.className = "revealed"  
+                            this.tiles_left--;                        
                             if(val_i == 0){        
                                 zero_tiles.push([I+di, J+dj]);
                             }
@@ -157,13 +188,22 @@ class Minesweeper {
 
     }
 
+
+
     in_bounds(i,j){
         if (i>=0 && j>=0 && i<this.rows && j<this.columns) return true;
         return false;
     }
 }
 
+
+
+
 let GUI = document.getElementById("grid");
 
 let board = new Minesweeper(GUI,1);
+
+
+
+
 

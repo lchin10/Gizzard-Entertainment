@@ -4,16 +4,25 @@
 
 .grid {
   margin: auto;
-  background: black;
 }
 
-.grid TD {
-  font-size: 14pt;
-  border: 4px #f9f9f9;
-  background: gray;
+TD {
+  font-size: 10pt;
+  border: 1px solid #222222;
   width: 16px;
   height: 16px;
   text-align: center;
   cursor: pointer;
 }
-/*# sourceMappingURL=main.css.map */
+
+.revealed {
+  background: pink;
+}
+
+.hidden {
+  background: white;
+}
+
+.flagged {
+  background: red;
+}
