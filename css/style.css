@@ -34,7 +34,7 @@ img.checkerpic
 img.tttpic
 {
     position: relative;
-    top: 50px;
+    top: -200px;
     left: 100px
 }
 
@@ -46,4 +46,18 @@ h2.checkerdesc
     color: white;
     font-family: "SF Mono", monospace;
 
+}
+img.minesweeperpic
+{
+    position: relative;
+    top: -275px;
+    left: 700px;
+}
+h2.minesweeperdesc
+{
+    position: relative;
+    top: -545px;
+    left: 975px;
+    color: white;
+    font-family: "SF Mono", monospace;
 }
