@@ -2,7 +2,7 @@
  *
  * Copyrighted (c) <2021> <Noah Robitshek> <noahro@bu.edu>  All Rights Reserved.
  * 
- * Filename: styles.css
+ * Filename: sudoku.css
  *
  * Description: Style sheets for the website and board game
  * 
@@ -12,6 +12,7 @@
  * 
  *
  */ 
+
 
  .hidden {
     display: none;
