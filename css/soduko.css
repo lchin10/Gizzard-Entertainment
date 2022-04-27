@@ -1,0 +1,120 @@
+/*
+ *
+ * Copyrighted (c) <2021> <Noah Robitshek> <noahro@bu.edu>  All Rights Reserved.
+ * 
+ * Filename: styles.css
+ *
+ * Description: Style sheets for the website and board game
+ * 
+ * Project: <EC 327 Project> 
+ *
+ * Creator: <Noah Robitshek>   <NR>
+ * 
+ *
+ */ 
+
+ .hidden {
+    display: none;
+}
+
+body.dark{
+    background-color: gray;
+}
+
+/* body.blue{
+    background-color: cornflowerblue;
+    color: black;
+}
+
+body.red{
+    background-color: lightcoral;
+    color: black;
+} */
+
+header {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 3px solid blue;
+}
+
+h1{
+    font-size: 45pt;
+    padding-bottom: 10px;
+}
+
+#setup-game {
+    display: flex;
+    justify-content: center;
+} 
+
+#setup-game > *{
+    margin-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#button {
+    justify-self: center;
+}
+
+p#timer, p#lives {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#game{
+    display: flex;
+    justify-content: center;
+}
+
+#number-container > p {
+    border: 1px solid black;
+    border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    font-size: 35pt;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+
+}
+#board{
+    padding-top: 10px;
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    width: 600px;
+    height: 600px;
+}
+.tile{
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    margin: 0px;
+    vertical-align: middle;
+    font-size: 40pt;
+}
+
+p.selected{
+    background-color: lightblue;
+}
+p.incorrect{
+    color: red;
+}
+.rightBorder{
+    border-right: 4px solid black;
+}
+.bottomBorder{
+    border-bottom: 4px solid black;
+}
+footer{
+    background-color: lightgray;
+    text-align: center;
+}
