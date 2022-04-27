@@ -2,7 +2,7 @@
  *
  * Copyrighted (c) <2021> <Noah Robitshek> <noahro@bu.edu>  All Rights Reserved.
  * 
- * Filename: index.js
+ * Filename: sudoku.js
  *
  * Description: Backend logic and logic for board game. 
  * 

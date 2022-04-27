@@ -2,9 +2,6 @@
 
 class Minesweeper {
 
-
-
-
     constructor(grid,flag_display){       
         
         this.rows = 15
