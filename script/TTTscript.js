@@ -15,14 +15,15 @@ const board = document.getElementById('board')
 const restart = document.getElementById('restartButton')
 const winningMessageElement = document.getElementById('winningMessage')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
-let circleTurn
+let circleTurn = false
+let beginTurn = false
 
 startGame()
 
 restart.addEventListener('click', startGame)
 
 function startGame(){
-    circleTurn = false
+    begTurn()
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
@@ -31,6 +32,12 @@ function startGame(){
     })
     setBoardHoverClass()
     winningMessageElement.classList.remove('show')
+}
+
+function begTurn(){
+    if (!beginTurn){circleTurn}
+    else {!circleTurn}
+    beginTurn = !beginTurn
 }
 
 function handleClick(e){
