@@ -35,8 +35,8 @@ function startGame(){
 }
 
 function begTurn(){
-    if (!beginTurn){circleTurn}
-    else {!circleTurn}
+    if (!beginTurn){circleTurn = true}
+    else {circleTurn = false}
     beginTurn = !beginTurn
 }
 
