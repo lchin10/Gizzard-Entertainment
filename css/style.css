@@ -41,15 +41,15 @@ img.tttpic
 img.sudokuPic
 {
     position: relative;
-    top: -200px;
-    left: 450px;
+    top: -525px;
+    left: 700px;
 }
 
 h2.sudokuTitle
 {
     position: relative;
-    top: -470px;
-    left: 1000px;
+    top: -800px;
+    left: 980px;
     color: white;
     font-family: "SF Mono", monospace;
 
@@ -75,6 +75,14 @@ h2.minesweeperdesc
     position: relative;
     top: -545px;
     left: 975px;
+    color: white;
+    font-family: "SF Mono", monospace;
+}
+h2.tttTitle
+{
+    position: relative;
+    top: -470px;
+    left: 380px;
     color: white;
     font-family: "SF Mono", monospace;
 }
