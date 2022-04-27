@@ -38,6 +38,23 @@ img.tttpic
     left: 100px
 }
 
+img.sodukoPic
+{
+    position: relative;
+    top: -200px;
+    left: 450px;
+}
+
+h2.sodukoTitle
+{
+    position: relative;
+    top: -470px;
+    left: 1000px;
+    color: white;
+    font-family: "SF Mono", monospace;
+
+}
+
 h2.checkerdesc
 {
     position: relative;
