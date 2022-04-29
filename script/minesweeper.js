@@ -2,6 +2,9 @@
 
 class Minesweeper {
 
+
+
+
     constructor(grid,flag_display){       
         
         this.rows = 15
@@ -166,6 +169,7 @@ class Minesweeper {
             for (let i = 0; i<this.rows; i++){
                 for (let j = 0; j<this.columns; j++){
                     this.reference_array[i][j].innerHTML = this.value(this.reference_array[i][j]);
+                    this.reference_array[i][j].className = "revealed"
                 }
             }
         } else {
@@ -202,7 +206,7 @@ class Minesweeper {
             }
         }
         if (this.remaining_tiles == 0) { //win condition
-            console.log("you win!")
+            alert("you win")
         }
 
     }
@@ -226,19 +230,11 @@ let timer = document.getElementById("timer");
 let flag_counter = document.getElementById("flag-count")
 let time_elapsed = 0;
 
+let reset = document.getElementById("restart")
 
-setInterval(increment_time(),1000)
 
 
 
 
 
 let board = new Minesweeper(GUI,flag_counter)
-
-
-
-
-function increment_time() {
-    time_elapsed = time_elapsed+1;
-    timer.innerHTML = time_elapsed;
-}
