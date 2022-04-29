@@ -35,7 +35,7 @@ class Minesweeper {
                     if (click == 3){
                         if(this.className == "hidden"){
                             this.className = "flagged"
-                            this.innerHTML = "<img src=\"images/minesweeper_flag.jpg\" width=16px height=13px>"
+                            this.innerHTML = "<img src=\"../pictures/minesweeper_flag.jpg\" width=16px height=13px>"
                             instance.flag_counter = instance.flag_counter - 1;
                             instance.flag_display.innerHTML = instance.flag_counter;
                         }
@@ -238,3 +238,7 @@ let reset = document.getElementById("restart")
 
 
 let board = new Minesweeper(GUI,flag_counter)
+
+reset.onclick = function () {
+    board = new Minesweeper(GUI,flag_counter)
+}

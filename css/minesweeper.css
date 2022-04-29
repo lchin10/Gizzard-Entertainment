@@ -1,6 +1,31 @@
-body {
-  color: red;
+:root {
+  font-family: 'Calibri';
+  --hidden-bg-color: rgb(154,154,154);
 }
-h1 {
-  color: blue;
+
+.grid {
+  margin: auto;
+}
+
+TD {
+  font-size: 10pt;
+  border: 1px solid #222222;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  cursor: pointer;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.revealed {
+  background: white;
+}
+
+.hidden {
+  background: var(--hidden-bg-color)
+}
+
+.flagged {
+  background: var(--hidden-bg-color)
 }
