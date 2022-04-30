@@ -6,7 +6,7 @@ class Minesweeper {
 
 
     constructor(grid,flag_display){     
-        let db = true; //debug  
+        let db = false; //debug  
         if (db == false) {        
         this.rows = 15;
         this.columns = 18;
