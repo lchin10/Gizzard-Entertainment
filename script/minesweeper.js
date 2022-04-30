@@ -5,11 +5,19 @@ class Minesweeper {
 
 
 
-    constructor(grid,flag_display){       
-        
-        this.rows = 15
+    constructor(grid,flag_display){     
+        let db = true; //debug  
+        if (db == false) {        
+        this.rows = 15;
         this.columns = 18;
         this.n_mines = 50;
+        }
+
+        if (db == true) {
+            this.rows = 5;
+            this.columns = 5;
+            this.n_mines = 2;
+        }
         this.flag_counter = this.n_mines;
         this.remaining_tiles = this.rows*this.columns-this.n_mines;
         this.flag_display = flag_display;
@@ -205,7 +213,9 @@ class Minesweeper {
                 }
             }
         }
+        let score = Number(localStorage.getItem("minesweeper_score"))
         if (this.remaining_tiles == 0) { //win condition
+            localStorage.setItem("minesweeper_score",score+1);
             alert("you win")
         }
 
