@@ -1,0 +1,88 @@
+body
+{
+    background-color: rgb(44, 44, 44)
+}
+
+h1.title
+{
+    text-align: center;
+    font-family: "SF Mono", monospace;
+    text-shadow: 1.5px 1.5px;
+
+}
+h1.title:visited
+{
+    text-decoration: none;
+    color: white;
+}
+
+hr.maindiv
+{
+    border-top: 4px solid #bbb;
+    border-radius: 5px;
+    width: 800px;
+    height: 2px;
+}
+img.checkerpic
+{
+    position: relative;
+    top: 50px;
+    left: 100px;
+
+}
+
+img.tttpic
+{
+    position: relative;
+    top: -200px;
+    left: 100px
+}
+
+img.sudokuPic
+{
+    position: relative;
+    top: -525px;
+    left: 700px;
+}
+
+h2.sudokuTitle
+{
+    position: relative;
+    top: -800px;
+    left: 980px;
+    color: white;
+    font-family: "SF Mono", monospace;
+
+}
+
+h2.checkerdesc
+{
+    position: relative;
+    top: -220px;
+    left: 375px;
+    color: white;
+    font-family: "SF Mono", monospace;
+
+}
+img.minesweeperpic
+{
+    position: relative;
+    top: -275px;
+    left: 700px;
+}
+h2.minesweeperdesc
+{
+    position: relative;
+    top: -545px;
+    left: 975px;
+    color: white;
+    font-family: "SF Mono", monospace;
+}
+h2.tttTitle
+{
+    position: relative;
+    top: -470px;
+    left: 380px;
+    color: white;
+    font-family: "SF Mono", monospace;
+}
