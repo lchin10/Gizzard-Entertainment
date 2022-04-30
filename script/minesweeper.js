@@ -213,9 +213,11 @@ class Minesweeper {
                 }
             }
         }
-        let score = Number(localStorage.getItem("minesweeper_score"))
         if (this.remaining_tiles == 0) { //win condition
-            localStorage.setItem("minesweeper_score",score+1);
+            localStorage.setItem(
+                "minesweeper_score",
+                Number(localStorage.getItem("minesweeper_score"))+1
+            );
             alert("you win")
         }
 
