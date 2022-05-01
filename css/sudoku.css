@@ -13,8 +13,7 @@
  *
  */ 
 
-
- .hidden {
+.hidden {
     display: none;
 }
 
@@ -118,4 +117,30 @@ p.incorrect{
 footer{
     background-color: lightgray;
     text-align: center;
+}
+
+.header {
+    text-align: center;
+    font-family: "SF Mono", monospace;
+  }
+  
+h1.title
+{
+    text-align: center;
+    font-family: "SF Mono", monospace;
+    text-shadow: 1.5px 1.5px;
+
+}
+h1.title:visited
+{
+    text-decoration: none;
+    color: black;
+}
+
+hr.maindiv
+{
+    border-top: 4px solid rgba(187, 187, 187, 0.193);
+    border-radius: 5px;
+    width: 800px;
+    height: 2px;
 }

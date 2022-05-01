@@ -3,6 +3,12 @@ body
     background-color: rgb(44, 44, 44)
 }
 
+.scoreboard{
+    text-align: center;
+    font-family: "SF Mono", monospace;
+    font-size: medium;
+}
+
 h1.title
 {
     text-align: center;
@@ -27,7 +33,7 @@ img.checkerpic
 {
     position: relative;
     top: 50px;
-    left: 100px;
+    left: -530px;
 
 }
 

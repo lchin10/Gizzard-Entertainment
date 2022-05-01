@@ -111,6 +111,11 @@ body{
     display: flex;
 }
 
+.header {
+    text-align: center;
+    font-family: "SF Mono", monospace;
+  }
+  
 h1.title
 {
     text-align: center;
