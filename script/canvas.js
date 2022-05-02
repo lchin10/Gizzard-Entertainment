@@ -15,6 +15,7 @@ let pos = {x: 0, y: 0};
 let turn = true;
 let selected = {x: null, y: null};
 let whiteKings = 0;
+let winner = false;
 
 const boardColors = [
     null,
@@ -51,10 +52,7 @@ function checkAll() {
     pieces.forEach((row, y) => {
         row.forEach((value, x) => {
             if (value % 2 == turn % 2 && value != 0) {
-                allMoves[[y, x]] = {
-                    ...validMoves({"x": x, "y": y}, y, x,[],1),
-                    ...validMoves({"x": x, "y": y}, y, x,[],2)
-                }
+                allMoves[[y, x]] = Object.assign({}, validMoves({"x": x, "y": y}, y, x,[],1), validMoves({"x": x, "y": y}, y, x,[],2));
             }
         });
     });
@@ -69,6 +67,7 @@ function checkWin() {
         }
     }
     if (numMoves == 0) {
+        winner = true;
         if (turn % 2 == 0) {
             console.log('Black wins');
         } else {
@@ -141,7 +140,7 @@ function drawBoard(matrix){
 
 function drawPieces(matrix,s){
     context.globalAlpha = 1;
-    if (s.x != null) {
+    if (s.x != null && s.x < ROWS) {
         context.fillStyle = 'lime';
         context.beginPath();
         context.arc(s.x+.5, s.y+.5, .4, 0, 2 * Math.PI);
@@ -178,12 +177,12 @@ function drawValid(matrix){
 }
 
 function kingMe(x, y) {
-    pieces[y][x] = (pieces[y][x]) % 2 + 4;
-    if (pieces[y][x] == 4) {
+    if (pieces[y][x] == 2) {
         whiteKings++;
-    } else {
+    } else if (pieces[y][x] == 1) {
         blackKings++;
     }
+    pieces[y][x] = (pieces[y][x]) % 2 + 4;
 }
 
 function startGame() {
@@ -196,6 +195,9 @@ function startGame() {
 
 function update() {
     draw();
+    if (!winner) {
+        checkWin();
+    }
     requestAnimationFrame(update);
 }
 
@@ -216,18 +218,22 @@ function selectPiece() {
     } 
 }
 
+function getMousePosition(canvas, event, position) {
+    let rect = canvas.getBoundingClientRect();
+    position.x = event.clientX - rect.left;
+    position.y = event.clientY - rect.top;
+}
+
 canvas.addEventListener("click", event=> {
-    if (checkWin()) {
+    if (winner) {
         return;
     }
-    pos.x = Math.floor(event.clientX / scale);
-    pos.y = Math.floor(event.clientY / scale);
+    getMousePosition(canvas, event, pos);
+    pos.x = Math.floor(pos.x / scale);
+    pos.y = Math.floor(pos.y / scale);
     selectPiece();
     if (selected.x !== null && selected.y !== null) {
-        validDict = {
-            ...validMoves(selected, selected.y,selected.x,[],1),
-            ...validMoves(selected, selected.y,selected.x,[],2)
-        }
+        validDict = Object.assign({}, validMoves(selected, selected.y,selected.x,[],1), validMoves(selected, selected.y,selected.x,[],2));
     } else {
         validDict = {};
     }
@@ -278,7 +284,7 @@ function validMoves(piece, row, col, path, step) {
     let left = col - 1*step;
     let right = col + 1*step;
 
-    moves = {};
+    let moves = {};
 
     for (newCol of [left, right]) {
         for (newRow of [up, down]) {
@@ -301,13 +307,10 @@ function validMoves(piece, row, col, path, step) {
                 if (leave) {
                     continue;
                 }
-                let newPath = path;
-                newPath.push([middleRow, middleCol]);
+                let newPath = Object.assign([],path);
+                newPath.push([middleRow,middleCol]);
                 moves[[newRow, newCol]] = newPath;
-                moves = {
-                    ...moves,
-                    ...validMoves(piece, newRow, newCol, newPath, step)
-                }
+                moves = Object.assign({}, moves, validMoves(piece, newRow, newCol, newPath, step));
             }
         }
     }
