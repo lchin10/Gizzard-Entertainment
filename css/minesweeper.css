@@ -35,3 +35,29 @@ TD {
 .flagged {
   background: var(--hidden-bg-color)
 }
+
+.header {
+  text-align: center;
+  font-family: "SF Mono", monospace;
+}
+
+h1.title
+{
+    text-align: center;
+    font-family: "SF Mono", monospace;
+    text-shadow: 1.5px 1.5px;
+
+}
+h1.title:visited
+{
+    text-decoration: none;
+    color: white;
+}
+
+hr.maindiv
+{
+    border-top: 4px solid #bbb;
+    border-radius: 5px;
+    width: 800px;
+    height: 2px;
+}

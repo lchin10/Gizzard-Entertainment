@@ -1,13 +1,22 @@
-:root {
-    background-color:rgb(44, 44, 44);
-    font-family: "SF Mono", monospace;
-    text-shadow: 1.5px 1.5px;
+body{
+    margin: 0;
+    background-color: rgb(44, 44, 44)
+}
+
+.wrapper {
     color: white;
 }
 
+.header {
+    text-align: center;
+    font-family: "SF Mono", monospace;
+  }
+  
 h1.title
 {
     text-align: center;
+    font-family: "SF Mono", monospace;
+    text-shadow: 1.5px 1.5px;
 
 }
 h1.title:visited
@@ -16,7 +25,10 @@ h1.title:visited
     color: white;
 }
 
-.wrapper {
-    text-shadow: none;
+hr.maindiv
+{
+    border-top: 4px solid #bbb;
+    border-radius: 5px;
+    width: 800px;
+    height: 2px;
 }
-
