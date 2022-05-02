@@ -17,3 +17,5 @@ Minesweeper!
 <br>
 Tic-Tac-Toe!
 </h1>
+<br>
+Group -> Lukas Chin, Shamir Legaspi, David Li, Vance Raiti, Noah Robitshek
