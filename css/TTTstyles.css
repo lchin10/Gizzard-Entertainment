@@ -90,14 +90,11 @@ header {
 }
 
 .winning-message{
-    display: none;
     position: absolute;
-    top: 10;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    margin-top: 100px;
+    margin-left: 700px;
     font-size: 40px;
-    color: white
+    color: black;
 }
 
 .winning-message button{
@@ -146,3 +143,22 @@ header {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 700;
   }
+
+
+.versus button{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.versus button:hover{
+    color: gray;
+}
+
+.versus button:focus{ color: gray; }
