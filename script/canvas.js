@@ -1,6 +1,6 @@
 const canvas = document.getElementById('Checkers');
 const context = canvas.getContext('2d');
-const scale = 100;
+const scale = 75;
 context.scale(scale, scale);
 
 const ROWS = 8;
