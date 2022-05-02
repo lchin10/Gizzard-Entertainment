@@ -167,16 +167,22 @@ class Minesweeper {
         }
         
         let zero_tiles = [];
+        let val;
         cell.innerHTML = cell.getAttribute("val");
         cell.className = "revealed";
-
+    
 
         if(this.value(cell)==-1){
             this.game_over=true; //mine!
             //reveal all
             for (let i = 0; i<this.rows; i++){
                 for (let j = 0; j<this.columns; j++){
-                    this.reference_array[i][j].innerHTML = this.value(this.reference_array[i][j]);
+                    cell = this.reference_array[i][j];
+                    val = this.value(cell);
+                    if (val == -1) {
+                        cell.innerHTML = "<img src=\"../pictures/minesweeper_bomb.jpg\" width=16px height=13px>"
+                    } else cell.innerHTML = this.value(cell);
+                    //this.reference_array[i][j].innerHTML = this.value(this.reference_array[i][j]);
                     this.reference_array[i][j].className = "revealed"
                 }
             }
