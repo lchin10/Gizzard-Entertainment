@@ -12,6 +12,10 @@ body{
     background-color: #e4e4dcdc;
 }
 
+header {
+    text-align: center;
+}
+
 .board {
     width: 100vw;
     height: 100vh;

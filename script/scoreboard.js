@@ -18,6 +18,3 @@ if (localStorage.getItem("sudoku_score")==null){
     sudoku_score.innerHTML = 0;
 } else sudoku_score.innerHTML = localStorage.getItem("sudoku_score");
 
-if (localStorage.getItem("politeness_score")==null){
-    politeness_score.innerHTML = 0;
-} else politeness_score.innerHTML = localStorage.getItem("politeness_score");

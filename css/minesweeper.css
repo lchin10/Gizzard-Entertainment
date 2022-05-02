@@ -66,3 +66,6 @@ TD {
   font-family: 'Courier New', Courier, monospace;
   font-weight: 700;
 }
+header {
+  text-align: center;
+}
