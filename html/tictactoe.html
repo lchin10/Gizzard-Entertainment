@@ -22,6 +22,15 @@
         <a href="scoreboard.html" class="header-link" style="text-decoration: none; color: white; margin-left:1em; margin-right: 1em">Your Scores</a>
     </p>
     <hr class = "maindiv">
+    <div class="versus" style="text-align: center">
+        <button id="hvh">Human vs Human</button>
+        <button id="hvc">Human vs Computer</button>
+        <button id="cvc">Computer vs Computer</button>
+    </div>
+    <div class="winning-message" id="winningMessage">
+        <div data-winning-message-text ></div>
+        <!-- <button id="restartButton">Restart</button> -->
+    </div>
     <div class="board" id="board">
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
@@ -32,10 +41,6 @@
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>
-    </div>
-    <div class="winning-message" id="winningMessage">
-        <div data-winning-message-text ></div>
-        <button id="restartButton">Restart</button>
     </div>
 </body>
 
