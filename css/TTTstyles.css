@@ -157,8 +157,5 @@ header {
     cursor: pointer;
 }
 
-.versus button:hover{
-    color: gray;
-}
-
-.versus button:focus{ color: gray; }
+.hvh:hover{ color: gray; }
+.hvh:focus{ color: gray; }

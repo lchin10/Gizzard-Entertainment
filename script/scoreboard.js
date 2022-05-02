@@ -14,7 +14,7 @@ if (localStorage.getItem("minesweeper_score")==null){
     minesweeper_score.innerHTML = 0;
 } else minesweeper_score.innerHTML = localStorage.getItem("minesweeper_score");
 
-if (localStorage.getItem("sudoku_score")==null){
-    sudoku_score.innerHTML = 0;
-} else sudoku_score.innerHTML = localStorage.getItem("sudoku_score");
+// if (localStorage.getItem("sudoku_score")==null){
+//     sudoku_score.innerHTML = 0;
+// } else sudoku_score.innerHTML = localStorage.getItem("sudoku_score");
 
