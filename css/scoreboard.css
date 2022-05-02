@@ -1,0 +1,22 @@
+:root {
+    background-color:rgb(44, 44, 44);
+    font-family: "SF Mono", monospace;
+    text-shadow: 1.5px 1.5px;
+    color: white;
+}
+
+h1.title
+{
+    text-align: center;
+
+}
+h1.title:visited
+{
+    text-decoration: none;
+    color: white;
+}
+
+.wrapper {
+    text-shadow: none;
+}
+
