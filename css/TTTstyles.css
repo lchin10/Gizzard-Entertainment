@@ -9,7 +9,13 @@
 
 body{
     margin: 0;
-    background-color: rgb(44, 44, 44)
+    background-color: #e4e4dcdc;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+header {
+    text-align: center;
 }
 
 .board {
@@ -84,12 +90,11 @@ body{
 }
 
 .winning-message{
-    /* display: none; */
     position: absolute;
-    padding-top: 100px;
-    padding-left: 700px;
+    margin-top: 100px;
+    margin-left: 700px;
     font-size: 40px;
-    color: white
+    color: black;
 }
 
 .winning-message button{
@@ -109,31 +114,36 @@ body{
     display: flex;
 }
 
-.header {
-    text-align: center;
-    font-family: "SF Mono", monospace;
+.figure {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:65%;
+}
+.figure img.title-hover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity .15s;
+}
+  .figure:hover img.title-hover {
+    opacity: 1;
+}
+  .header-link
+  {
+    padding: 40px;
+    width: 100%;
+    margin: auto;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
   }
-  
-h1.title
-{
-    text-align: center;
-    font-family: "SF Mono", monospace;
-    text-shadow: 1.5px 1.5px;
 
-}
-h1.title:visited
-{
-    text-decoration: none;
-    color: white;
-}
-
-hr.maindiv
-{
-    border-top: 4px solid #bbb;
-    border-radius: 5px;
-    width: 800px;
-    height: 2px;
-}
 
 .versus button{
     margin-top: 30px;
@@ -143,7 +153,7 @@ hr.maindiv
     background: none;
     border: none;
     text-decoration: none;
-    color: white;
+    color: black;
     cursor: pointer;
 }
 

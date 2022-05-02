@@ -8,7 +8,7 @@
 }
 
 body{
-  background-color: rgb(44,44,44)
+  background-color: #e4e4dcdc;
 }
 
 
@@ -36,28 +36,36 @@ TD {
   background: var(--hidden-bg-color)
 }
 
-.header {
+.figure {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width:65%;
+}
+.figure img.title-hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity .15s;
+}
+.figure:hover img.title-hover {
+  opacity: 1;
+}
+
+.header-link
+{
+  padding: 40px;
+  width: 100%;
+  margin: auto;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+}
+header {
   text-align: center;
-  font-family: "SF Mono", monospace;
-}
-
-h1.title
-{
-    text-align: center;
-    font-family: "SF Mono", monospace;
-    text-shadow: 1.5px 1.5px;
-
-}
-h1.title:visited
-{
-    text-decoration: none;
-    color: white;
-}
-
-hr.maindiv
-{
-    border-top: 4px solid #bbb;
-    border-radius: 5px;
-    width: 800px;
-    height: 2px;
 }

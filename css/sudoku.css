@@ -13,7 +13,8 @@
  *
  */ 
 
-.hidden {
+
+ .hidden {
     display: none;
 }
 
@@ -118,29 +119,32 @@ footer{
     background-color: lightgray;
     text-align: center;
 }
-
-.header {
-    text-align: center;
-    font-family: "SF Mono", monospace;
-  }
-  
-h1.title
+.header-link
 {
-    text-align: center;
-    font-family: "SF Mono", monospace;
-    text-shadow: 1.5px 1.5px;
-
+  padding: 40px;
+  width: 100%;
+  margin: auto;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
 }
-h1.title:visited
-{
-    text-decoration: none;
-    color: black;
+.figure {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:65%;
 }
-
-hr.maindiv
-{
-    border-top: 4px solid rgba(187, 187, 187, 0.193);
-    border-radius: 5px;
-    width: 800px;
-    height: 2px;
+.figure img.title-hover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity .15s;
+}
+  .figure:hover img.title-hover {
+    opacity: 1;
 }

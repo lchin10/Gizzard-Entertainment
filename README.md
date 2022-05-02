@@ -7,5 +7,5 @@
 <p>
   https://davcurse.github.io/Gizzard-Entertainment
 </p>
-
+![Gizzard Games](https://github.com/davcurse/Gizzard-Entertainment/tree/main/pictures/websitepreview.png)
 
