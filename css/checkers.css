@@ -51,3 +51,11 @@ header {
     font-size: 40px;
     color: black;
 }
+
+.restart{
+    margin-top: 10px;
+    margin-left: 65px;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+}

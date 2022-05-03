@@ -3,6 +3,7 @@ const context = canvas.getContext('2d');
 const scale = 75;
 context.scale(scale, scale);
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
+const restart = document.getElementById('restart');
 
 const ROWS = 8;
 const COLS = 8;
@@ -187,11 +188,14 @@ function kingMe(x, y) {
 }
 
 function startGame() {
+    blackKings = 0;
     board = createBoard(ROWS,COLS);
     pieces = createPieces(ROWS,COLS);
     valid = createValid(ROWS,COLS);
     pos = {x: 0, y: 0};
     turn = true;
+    selected = {x: null, y: null};
+    whiteKings = 0;
 }
 
 function update() {
@@ -320,3 +324,4 @@ function validMoves(piece, row, col, path, step) {
 }
 winningMessageTextElement.innerText = `Black's Turn`
 update();
+restart.addEventListener('click', startGame)
