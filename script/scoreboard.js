@@ -27,9 +27,13 @@ if (localStorage.getItem("ttt_score")==null){
 reset.addEventListener('click', resetScores)
 
 function resetScores(){
+    if( ! confirm("Do you really want to do this?") ){
+        e.preventDefault(); // ! => don't want to do this
+    } else {
     localStorage.clear();
     checkers_score.innerHTML = 0;
     minesweeper_score.innerHTML = 0;
     sudoku_score.innerHTML = 0;
     ttt_score.innerHTML = 0;
+    }
 }
