@@ -55,17 +55,17 @@ function startGamehvc(){
 
 function startGamecvc(){
     begTurn()
-    let i = Math.floor(Math.random() * 9)
-    const currentClass = circleTurn ? O_CLASS : X_CLASS
     cellElements.forEach(cell => {
         cell.removeEventListener('click', handleClick)
         cell.removeEventListener('click', handleclickhvc)
         cell.removeEventListener('click', handleclickcvc)
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
-        handleclickcvc()
     })
-    aiPlaceMark()
+    while(!checkWin(currentClass) && !isDraw()){
+        aiPlaceMark(cell)
+        aiPlaceMark()
+    }
 }
 
 function begTurn(){
@@ -191,13 +191,13 @@ function aiPlaceMark(cell){
     let i = Math.floor(Math.random() * 9)
     const currentClass = circleTurn ? O_CLASS : X_CLASS
     setTimeout(function(){
-    if (circleTurn != beginTurn){
-        if (!cellElements[i].classList.contains(X_CLASS) && !cellElements[i].classList.contains(O_CLASS)){
-            cellElements[i].classList.add(currentClass)
-            checkingWinhvc()
+        if (circleTurn != beginTurn){
+            if (!cellElements[i].classList.contains(X_CLASS) && !cellElements[i].classList.contains(O_CLASS) && !checkWin(currentClass)){
+                cellElements[i].classList.add(currentClass)
+                checkingWinhvc()
+            }
         }
-    }
-}, 300)
+    }, 300)
     return aiPlaceMark()
 }
 
@@ -255,15 +255,4 @@ function avail(reboard){
     return [...cellElements].filter(cell => {
         return !cell.classList.contains(X_CLASS) && !cell.classList.contains(O_CLASS)
     })
-}
-
-function comp(){
-    let i = Math.floor(Math.random() * 9)
-    while (cellElements[i].classList.contains(O_CLASS) || cellElements[i].classList.contains(X_CLASS)){
-        i = Math.floor(Math.random() * 9 + 1)
-    }
-    const cell = cellELements[i]
-    const currentClass = circleTurn ? O_CLASS : X_CLASS
-    placeMark(cell, currentClass)
-    checkingWin()
 }
