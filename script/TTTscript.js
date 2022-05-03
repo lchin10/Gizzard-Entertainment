@@ -54,6 +54,7 @@ function startGamehvc(){
 }
 
 function startGamecvc(){
+    document.getElementById("transbox").style.visibility = "visible"
     begTurn()
     cellElements.forEach(cell => {
         cell.removeEventListener('click', handleClick)
@@ -165,13 +166,28 @@ function checkingWinhvc(){
     }
 }
 
+function checkingWincvc(){
+    const currentClass = circleTurn ? O_CLASS : X_CLASS
+    if (checkWin(currentClass)){
+        endGame(false)
+        document.getElementById("transbox").style.visibility = "hidden"
+    }
+    else if (isDraw()){
+        endGame(true)
+        document.getElementById("transbox").style.visibility = "hidden"
+    }
+    else{
+        switchTurns()
+    }
+}
+
 function handleclickcvc(){
     const currentClass = circleTurn ? O_CLASS : X_CLASS
     let i = Math.floor(Math.random() * 9)
     if (!cellElements[i].classList.contains(X_CLASS) && !cellElements[i].classList.contains(O_CLASS) && !checkWin(currentClass)){
         setTimeout(function(){
             cellElements[i].classList.add(currentClass)
-            checkingWin()
+            checkingWincvc()
         }, 300)
     }
     if (!checkWin(currentClass) && !isDraw()){

@@ -155,7 +155,25 @@ header {
     text-decoration: none;
     color: black;
     cursor: pointer;
+    position: relative;
 }
 
 .works:hover{ color: gray; }
 .works:focus{ color: gray; }
+
+.transbox{
+    visibility: hidden;
+    z-index: 10;
+    position: absolute;
+    height: 70px;
+    width: 850px;
+    margin: 30px;
+    background-color: #ffffff;
+    opacity: 0;
+}
+
+.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+  }
