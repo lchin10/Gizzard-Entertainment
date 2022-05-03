@@ -62,10 +62,7 @@ function startGamecvc(){
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
     })
-    while(!checkWin(currentClass) && !isDraw()){
-        aiPlaceMark(cell)
-        aiPlaceMark()
-    }
+    handleclickcvc()
 }
 
 function begTurn(){
@@ -169,22 +166,17 @@ function checkingWinhvc(){
 }
 
 function handleclickcvc(){
-    let i = Math.floor(Math.random() * 9)
     const currentClass = circleTurn ? O_CLASS : X_CLASS
-    setTimeout(function(){
-    if (circleTurn != beginTurn){
-        if (!cellElements[i].classList.contains(X_CLASS) && !cellElements[i].classList.contains(O_CLASS)){
+    let i = Math.floor(Math.random() * 9)
+    if (!cellElements[i].classList.contains(X_CLASS) && !cellElements[i].classList.contains(O_CLASS) && !checkWin(currentClass)){
+        setTimeout(function(){
             cellElements[i].classList.add(currentClass)
-            checkingWinhvc()
-        }
-    } else {
-        if (!cellElements[i].classList.contains(X_CLASS) && !cellElements[i].classList.contains(O_CLASS)){
-            cellElements[i].classList.add(currentClass)
-            checkingWinhvc()
-        }
+            checkingWin()
+        }, 300)
     }
-}, 300)
-    return aiPlaceMark()
+    if (!checkWin(currentClass) && !isDraw()){
+        setTimeout(handleclickcvc, 300)
+    }
 }
 
 function aiPlaceMark(cell){
