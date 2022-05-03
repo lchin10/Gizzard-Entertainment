@@ -122,7 +122,13 @@ function endGamehvc(draw){
         winningMessageTextElement.innerText = 'Draw!'
     }
     else {
-        if (beginTurn){winningMessageTextElement.innerText = `${circleTurn ? "You Win" : "You Lose"}!`}
+        if (beginTurn){
+            winningMessageTextElement.innerText = `${circleTurn ? "You Win" : "You Lose"}!`
+            localStorage.setItem(
+                "ttt_score",
+                Number(localStorage.getItem("ttt_score"))+1
+            );
+        }
         else {winningMessageTextElement.innerText = `${circleTurn ? "You Lose" : "You Win"}!`}
     }
     cellElements.forEach(cell => {
