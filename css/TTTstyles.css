@@ -165,15 +165,9 @@ header {
     visibility: hidden;
     z-index: 10;
     position: absolute;
-    height: 70px;
-    width: 850px;
+    height: 700px;
+    width: 8500px;
     margin: 30px;
     background-color: #ffffff;
     opacity: 0;
 }
-
-.transbox p {
-    margin: 5%;
-    font-weight: bold;
-    color: #000000;
-  }
