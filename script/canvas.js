@@ -2,6 +2,7 @@ const canvas = document.getElementById('Checkers');
 const context = canvas.getContext('2d');
 const scale = 75;
 context.scale(scale, scale);
+const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 
 const ROWS = 8;
 const COLS = 8;
@@ -69,9 +70,9 @@ function checkWin() {
     if (numMoves == 0) {
         winner = true;
         if (turn % 2 == 0) {
-            console.log('Black wins');
+            winningMessageTextElement.innerText = 'Black Wins!'
         } else {
-            console.log('White wins');
+            winningMessageTextElement.innerText = 'White Wins!'
         }
         return true;
     }
@@ -253,6 +254,7 @@ canvas.addEventListener("click", event=> {
             pieces[y][x] = 0;
         }
         turn = !turn;
+        winningMessageTextElement.innerText = `${turn ? "Black" : "White"}'s Turn`
     }
 });
 
@@ -316,5 +318,5 @@ function validMoves(piece, row, col, path, step) {
     }
     return moves;
 }
-
+winningMessageTextElement.innerText = `Black's Turn`
 update();
