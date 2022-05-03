@@ -46,7 +46,7 @@ header {
 
 .winMessage{
     position: absolute;
-    margin-top: 300px;
+    margin-top: 280px;
     margin-left: 200px;
     font-size: 40px;
     color: black;
@@ -54,8 +54,10 @@ header {
 
 .restart{
     margin-top: 10px;
-    margin-left: 65px;
+    margin-left: 40px;
     font-size: 20px;
-    color: black;
+    color: white;
     cursor: pointer;
+    background-color: #090909;
+    padding: 13px 30px;
 }
