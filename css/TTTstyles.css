@@ -157,5 +157,5 @@ header {
     cursor: pointer;
 }
 
-.hvh:hover{ color: gray; }
-.hvh:focus{ color: gray; }
+.works:hover{ color: gray; }
+.works:focus{ color: gray; }
