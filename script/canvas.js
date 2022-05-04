@@ -196,6 +196,7 @@ function startGame() {
     turn = true;
     selected = {x: null, y: null};
     whiteKings = 0;
+    winningMessageTextElement.innerText = `Black's Turn`
 }
 
 function update() {
