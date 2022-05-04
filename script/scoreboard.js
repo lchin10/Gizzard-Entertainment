@@ -6,6 +6,7 @@ let minesweeper_score = getid("minesweeper_score");
 let sudoku_score = getid("sudoku_score");
 let ttt_score = getid("ttt_score");
 let politeness_score = getid("politeness_score");
+let snake_score = getid("snake_score")
 const reset = document.getElementById('reset')
 
 if (localStorage.getItem("checkers_score")==null) {
@@ -24,6 +25,10 @@ if (localStorage.getItem("ttt_score")==null){
     ttt_score.innerHTML = 0;
 } else ttt_score.innerHTML = localStorage.getItem("ttt_score");
 
+if (localStorage.getItem("snake_score")==null){
+    snake_score.innerHTML = 0;
+} else snake_score.innerHTML = localStorage.getItem("snake_score");
+
 reset.addEventListener('click', resetScores)
 
 function resetScores(){
@@ -35,5 +40,6 @@ function resetScores(){
     minesweeper_score.innerHTML = 0;
     sudoku_score.innerHTML = 0;
     ttt_score.innerHTML = 0;
+    snake_score.innerHTML = 0;
     }
 }

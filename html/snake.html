@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <title>Snake - Gizzard Games</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<header>
+    <div class="figure">
+        <a href = "../index.html"><img class="title-main" src="../pictures/titleUnhovered.png"></a>
+        <a href = "../index.html"><img class="title-hover" src="../pictures/titleHovered.png"></a>
+    </div>
+    <p class="header">
+        <a href="checkers.html" class="header-link" style="text-decoration: none; color: black; margin-left:1em; margin-right: 1em">Checkers</a>
+  
+        <a href="minesweeper.html" class="header-link" style="text-decoration: none; color: black; margin-left:1em; margin-right: 1em">Minesweeper</a>
+  
+        <a href="sudoku.html" class="header-link" style="text-decoration: none; color: black; margin-left:1em; margin-right: 1em">Sudoku</a>
+  
+        <a href="tictactoe.html" class="header-link" style="text-decoration: none; color: black; margin-left:1em; margin-right: 1em">Tic-Tac-Toe</a>
+
+        <a href="snake.html" class="header-link" style="text-decoration: none; color: black; margin-left:1em; margin-right: 1em">Snake</a>
+  
+        <a href="scoreboard.html" class="header-link" style="text-decoration: none; color: black; margin-left:1em; margin-right: 1em">Your Scores</a>
+    </p>
+<hr class = "maindiv"></div>
+</header>
+<h1 class = "desc"><div gameStatusMessage></div></h1>
+<style>
+    body
+    {
+        min-height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    h1.desc
+    {
+        text-align: center;
+        margin: auto;
+    }
+
+    #game-board
+    {
+        background-color: antiquewhite;
+        width: 500px;
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        display: grid;
+        justify-content: center;
+        grid-template-rows: repeat(21, 1fr);
+        grid-template-columns: repeat(21, 1fr);
+    }
+
+    .snake
+    {
+        background-color: green;
+        border: .25vmin solid black;
+    }
+
+    .food
+    {
+        background-color: maroon;
+        border: .25vmin solid black;
+    }
+
+    .restartButt{
+    margin-top: -100px;
+    margin-left: 350px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    background-color: #090909;
+    padding: 13px 30px;
+    }
+
+</style>
+<script src = "../script/snake/snake.js" defer type = "module"></script>
+
+<body>
+    <div id = "game-board"></div>
+    <button class = "restartButt" id = "restartgame">Restart</button>
+</body>
+
+</html>
