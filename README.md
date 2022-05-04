@@ -16,6 +16,8 @@ Sudoku!
 Minesweeper!
 <br>
 Tic-Tac-Toe!
+<br>
+Snake!
 </h1>
 <br>
 Group -> Lukas Chin, Shamir Legaspi, David Li, Vance Raiti, Noah Robitshek
