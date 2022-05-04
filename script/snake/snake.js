@@ -11,10 +11,10 @@ const gameStatusMessage = document.querySelector('[gameStatusMessage]')
 
 function main(currentTime)
 {
-    gameStatusMessage.innerText = 'USE ARROW KEYS TO MOVE!'
+    gameStatusMessage.innerText = 'USE ARROW KEYS TO MOVE!\n' +  'Score : ' + highscore
     if (gameOver)
     {
-        gameStatusMessage.innerText = 'GAME OVER!'
+        gameStatusMessage.innerText = 'GAME OVER!\n' + 'Score : ' + highscore
         localStorage.setItem(
             "snake_score",
             highscore)
