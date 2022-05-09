@@ -4,7 +4,7 @@
 <head>
     <meta charset = "UTF-8">
     <title>Snake - Gizzard Games</title>
-    <link rel="stylesheet" href="../css/snake.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <header>
@@ -39,9 +39,51 @@
         overflow-x: hidden;
         overflow-y: hidden;
     }
-</style>
 
-<script src = "./script/snake/snake.js" defer type = "module"></script>
+    h1.desc
+    {
+        text-align: center;
+        margin: auto;
+    }
+
+    #game-board
+    {
+        background-color: antiquewhite;
+        width: 500px;
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        display: grid;
+        justify-content: center;
+        grid-template-rows: repeat(21, 1fr);
+        grid-template-columns: repeat(21, 1fr);
+    }
+
+    .snake
+    {
+        background-color: green;
+        border: .25vmin solid black;
+    }
+
+    .food
+    {
+        background-color: maroon;
+        border: .25vmin solid black;
+    }
+
+    .restartButt{
+    margin-top: -100px;
+    margin-left: 350px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    background-color: #090909;
+    padding: 13px 30px;
+    }
+
+</style>
+<script src = "../script/snake/snake.js" defer type = "module"></script>
 
 <body>
     <button class = "restartButt" id = "restartgame">Restart</button>
