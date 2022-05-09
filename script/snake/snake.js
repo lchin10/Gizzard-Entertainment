@@ -15,9 +15,10 @@ function main(currentTime)
     if (gameOver)
     {
         gameStatusMessage.innerText = 'GAME OVER!\n' + 'Score : ' + highscore
-        localStorage.setItem(
-            "snake_score",
-            highscore)
+        var x = (localStorage.getItem("snake_score"))
+        if (x >= highscore){
+            localStorage.setItem("snake_score",highscore)
+        }
         return
     }
     window.requestAnimationFrame(main)
