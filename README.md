@@ -8,6 +8,7 @@
 </p>
 
 <a href = "https://davcurse.github.io/Gizzard-Entertainment">![Gizzard Games](/pictures/websitepreview.png) </a>
+Click on the picture above to visit the website! Games can be played by clicking on the corresponding pictures. Scores for each game can be checked by pressing the 'Your Scores' button on the header at the homepage or at any game! You can quickly access other games from the header through the buttons! All games are classic self-explanatory games! 
 <hr>
 <h1>Checkers!
 <br>

@@ -243,6 +243,10 @@ function endGame(){
         id("lives").textContent = "You Lost";
     } else {
         id("lives").textContent = "You Won"
+        localStorage.setItem(
+            "sudoku_score",
+            Number(localStorage.getItem("sudoku_score"))+1
+        );
     }
 }
 
