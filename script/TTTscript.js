@@ -1,3 +1,4 @@
+
 const X_CLASS = 'x'
 const O_CLASS = 'o'
 const WINNING_COMBINATIONS = [
@@ -14,18 +15,20 @@ const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const hvh = document.getElementById('hvh')
 const hvc = document.getElementById('hvc')
+const hva = document.getElementById('hva')
 const cvc = document.getElementById('cvc')
 const winningMessageElement = document.getElementById('winningMessage')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 let circleTurn = true
 let beginTurn = true
-var boardID = [0,1,2,3,4,5,6,7,8]
-var iter = 0
+let boardID = [0,1,2,3,4,5,6,7,8]
+let iter = 0
 
 startGamehvh()
 
 hvh.addEventListener('click', startGamehvh)
 hvc.addEventListener('click', startGamehvc)
+hva.addEventListener('click', startGamehva)
 cvc.addEventListener('click', startGamecvc)
 
 function startGamehvh(){
@@ -33,6 +36,7 @@ function startGamehvh(){
     cellElements.forEach(cell => {
         cell.removeEventListener('click', handleClick)
         cell.removeEventListener('click', handleclickhvc)
+        cell.removeEventListener('click', handleclickhva)
         cell.removeEventListener('click', handleclickcvc)
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
@@ -45,6 +49,7 @@ function startGamehvc(){
     cellElements.forEach(cell => {
         cell.removeEventListener('click', handleClick)
         cell.removeEventListener('click', handleclickhvc)
+        cell.removeEventListener('click', handleclickhva)
         cell.removeEventListener('click', handleclickcvc)
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
@@ -53,12 +58,27 @@ function startGamehvc(){
     aiPlaceMark()
 }
 
+function startGamehva(){
+    begTurn()
+    cellElements.forEach(cell => {
+        cell.removeEventListener('click', handleClick)
+        cell.removeEventListener('click', handleclickhvc)
+        cell.removeEventListener('click', handleclickhva)
+        cell.removeEventListener('click', handleclickcvc)
+        cell.classList.remove(X_CLASS)
+        cell.classList.remove(O_CLASS)
+        cell.addEventListener('click', handleclickhva, {once:true})
+    })
+    handleclickhva()
+}
+
 function startGamecvc(){
     document.getElementById("transbox").style.visibility = "visible"
     begTurn()
     cellElements.forEach(cell => {
         cell.removeEventListener('click', handleClick)
         cell.removeEventListener('click', handleclickhvc)
+        cell.removeEventListener('click', handleclickhva)
         cell.removeEventListener('click', handleclickcvc)
         cell.classList.remove(X_CLASS)
         cell.classList.remove(O_CLASS)
@@ -134,6 +154,25 @@ function endGamehvc(draw){
     })    
 }
 
+function endGamehva(draw){
+        if (draw){
+            winningMessageTextElement.innerText = 'Draw!'
+        }
+        else {
+            if (beginTurn){
+                winningMessageTextElement.innerText = `${circleTurn ? "You Win" : "You Lose"}!`
+                localStorage.setItem(
+                    "ttt_score",
+                    Number(localStorage.getItem("ttt_score"))+1
+                );
+            }
+            else {winningMessageTextElement.innerText = `${circleTurn ? "You Lose" : "You Win"}!`}
+        }
+        cellElements.forEach(cell => {
+            cell.removeEventListener('click', handleclickhva)
+        })    
+    }
+
 function isDraw(){
     return [...cellElements].every(cell => {
         return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
@@ -148,6 +187,15 @@ function checkWin(currentClass){
     })
 }
 
+function checkWin2(currentBoard, currentClass) {
+    let currClass = (currentClass == O_CLASS) ? 'o' : 'x';
+    return WINNING_COMBINATIONS.some(combination => {
+      return combination.every(index => {
+        return currentBoard[index] === currClass;
+      });
+    });
+  }
+
 function handleclickhvc(e){
     const cell = e.target
     const currentClass = circleTurn ? O_CLASS : X_CLASS
@@ -161,6 +209,27 @@ function checkingWinhvc(){
     const currentClass = circleTurn ? O_CLASS : X_CLASS
     if (checkWin(currentClass)){ endGamehvc(false) }
     else if (isDraw()){ endGamehvc(true) }
+    else{
+        switchTurns()
+    }
+}
+
+function handleclickhva(e){
+    const cell = e.target
+    let currentClass = circleTurn ? O_CLASS : X_CLASS
+
+    placeMark(cell, currentClass)
+    checkingWinhva()
+
+    if (!checkWin(currentClass) && !isDraw()) {
+        setTimeout(minmaxStart, 300);
+    }
+}
+
+function checkingWinhva(){
+    const currentClass = circleTurn ? O_CLASS : X_CLASS
+    if (checkWin(currentClass)){ endGamehva(false) }
+    else if (isDraw()){ endGamehva(true) }
     else{
         switchTurns()
     }
@@ -205,62 +274,102 @@ function aiPlaceMark(cell){
                 checkingWinhvc()
             }
         }
-    }, 300)
+    }, 200)
     return aiPlaceMark()
 }
 
-function minmax(reboard, cclass) {
-    iter++
-    let array = avail(reboard)
-    if (checkWin(X_CLASS)){
-        return {score: -10}
-    }
-    else if (checkWin(O_CLASS)){
-        return { score: 10 }
-    }
-    else if (array.length === 0){
-        return{score: 0}
-    }
-    var moves = []
-    for (var i = 0;i < array.length;i++){
-        var move = {}
-        move.index = reboard[array[i]]
-        reboard[array[i]] = cclass
-
-        if (cclass == O_CLASS){
-            var g = minmax(reboard, X_CLASS)
-            move.score = g.score
+function avail(reboard) {
+    const availableCells = [];
+    reboard.forEach((cell, index) => {
+        if (cell != 'o' && cell != 'x') {
+            availableCells.push(index);
         }
-        else{
-            var g = minmax(reboard, O_CLASS)
-            move.score = g.score
-        }
-        reboard[array[i]] = move.index
-        moves.push(move)
-    }
-    var bestMove
-    if (cclass === O_CLASS){
-        var bestScore = -10000
-        for (var i = 0;i < moves.length; i++){
-            if (moves[i].score > bestScore){
-                bestScore = moves[i].score
-                bestMove = i
-            }
-        }
-    } else{
-        var bestScore = 10000
-        for (var i = 0;i < moves.length;i++){
-            if (moves[i].score < bestScore){
-                bestScore = moves[i].score
-                bestMove = i
-            }
-        }
-    }
-    return moves[bestMove]
+    });
+    return availableCells;
 }
 
-function avail(reboard){
-    return [...cellElements].filter(cell => {
-        return !cell.classList.contains(X_CLASS) && !cell.classList.contains(O_CLASS)
-    })
+function minmaxStart(){
+    let currentClass = circleTurn ? O_CLASS : X_CLASS;
+    function getCurrBoard() {
+        const boardState = [];
+        cellElements.forEach(cell => {
+            if (cell.classList.contains(X_CLASS)) {
+                boardState.push('x');
+            } else if (cell.classList.contains(O_CLASS)) {
+                boardState.push('o');
+            } else {
+                const index = Array.from(cellElements).indexOf(cell);
+                boardState.push(index);
+            }
+        });
+      
+        return boardState;
+    }
+    console.log('initial: ',getCurrBoard());
+    const bestMove = minmax(getCurrBoard(),currentClass,currentClass).index;
+    console.log(bestMove);
+    cellElements[bestMove].classList.add(currentClass);
+    checkingWinhva();
+}
+
+function minmax(reboard, cclass, compClass) {
+    console.log(reboard);
+    const humClass = (compClass == O_CLASS) ? X_CLASS : O_CLASS;
+    iter++;
+
+    let array = avail(reboard);
+    console.log('array: ',array);
+
+    if (checkWin2(reboard,compClass)) {
+        return { score: 10 };
+    } else if (checkWin2(reboard,humClass)) {
+        return { score: -10 };
+    } else if (array.length === 0) {
+        return { score: 0 };
+    }
+
+    let moves = [];
+    for (let i = 0; i < array.length; i++) {
+        let move = {};
+        move.index = reboard[array[i]];
+        reboard[array[i]] = (cclass == O_CLASS) ? 'o' : 'x';
+
+        if (cclass === compClass) {
+            let g = minmax(reboard, humClass, compClass);
+            move.score = g.score;
+            console.log('score: ',move.score);
+        } else {
+            let g = minmax(reboard, compClass, compClass);
+            move.score = g.score;
+            console.log('score: ',move.score);
+        }
+
+        reboard[array[i]] = move.index;
+        moves.push(move);
+        console.log('moves1: ',moves);
+    }
+
+    let bestMove;
+    console.log('moves: ',moves)
+    if (cclass === compClass) {
+        let bestScore = -1000;
+        for (let i = 0; i < moves.length; i++) {
+            if (moves[i].score > bestScore) {
+                bestScore = moves[i].score;
+                bestMove = i;
+                console.log('bmove: ',moves[bestMove].index);
+            }
+        }
+    } else {
+        let bestScore = 1000;
+        for (let i = 0; i < moves.length; i++) {
+            if (moves[i].score < bestScore) {
+                bestScore = moves[i].score;
+                bestMove = i;
+                console.log('bmove: ',bestMove);
+            }
+        }
+    }
+    
+    return moves[bestMove];
 }
