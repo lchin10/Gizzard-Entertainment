@@ -7,6 +7,11 @@
 <p>
 </p>
 
+<a>To the original project: <a href = "https://davcurse.github.io/Gizzard-Entertainment">https://davcurse.github.io/Gizzard-Entertainment</a></a>
+<p></p>
+<a>Changes from the original: Added a working Computer vs. AI mode in the TicTacToe game.</a>
+<p></p>
+
 <a href = "https://lchin10.github.io/Gizzard-Entertainment">![Gizzard Games](/pictures/websitepreview.png) </a>
 Click on the picture above to visit the website! Games can be played by clicking on the corresponding pictures. Scores for each game can be checked by pressing the 'Your Scores' button on the header at the homepage or at any game! You can quickly access other games from the header through the buttons! All games are classic self-explanatory games! 
 <hr>
